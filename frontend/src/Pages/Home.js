@@ -9,8 +9,9 @@ function Home() {
   return (
     <div>
     <Banner />
-    <Collections/>
-    <Seller/>
+    <Collections title1='LATEST' title2='COLLECTIONS' limit={10}/>
+    <Collections title1='BEST' title2='SELLER' limit={5}/>
+    {/* <Seller/> */}
     <Policy/>
     <Subscribe/>
     </div>

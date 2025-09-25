@@ -43,7 +43,7 @@ function Header() {
         
         <div><img src={searchimg} alt='sreachimg'></img></div>
         <NavLink to={'/login'}><img src={profileimg} alt='profileimg' ></img></NavLink>
-        <div><img src={bagimage} alt='bagimg' ></img></div>
+        <NavLink to={'/cart'}><img src={bagimage} alt='bagimg' ></img></NavLink>
       </div>
    </div>
    

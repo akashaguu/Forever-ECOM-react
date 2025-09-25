@@ -11,7 +11,7 @@ import dressimg8 from '../../images/Rectangle 3634.png'
 import dressimg9 from '../../images/Rectangle 3616.png'
 import dressimg10 from '../../images/Rectangle 3617.png'
 
-function Collections() {
+function Collections({title1,title2,limit}) {
   const collection=[{
     colimg:dressimg1,
     coltext:"Round Neck Cotton Top",
@@ -54,20 +54,21 @@ function Collections() {
     colrate:"$149"
   }
 ]
+const displaycollection=limit?collection.slice(0,limit):collection
   return (
     
     <div>
     <div className='mt-16 flex justify-center items-center gap-2'>
-        <h2 className='text-gray-600 font-medium text-xl'>LATEST</h2>
-        <h2 className='text-xl'>COLLECTIONS</h2>
+        <h2 className='text-gray-600 font-medium text-xl'>{title1}</h2>
+        <h2 className='text-xl'>{title2}</h2>
         <img src={line2} alt='line2'  />
     </div>
-    <div><h2 className='text-center font-medium- text-sm text-gray-600'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the.</h2></div>
+    <div><h2 className='text-center font-medium- text-sm text-gray-600'>Lorem Ipsumis simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the.</h2></div>
     <div className='flex'>
       <div className='grid grid-cols-5 ml-[100px] mt-4 gap-[20px]'>
         
         {
-          collection.map((i)=>(
+          displaycollection.map((i)=>(
             <div>
             <div className=''><img src={i.colimg} alt='collect'/></div>
             <div>

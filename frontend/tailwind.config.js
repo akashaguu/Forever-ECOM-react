@@ -9,6 +9,7 @@ module.exports = {
         colombo: ['"Post No Bills Colombo"', 'sans-serif'],
         poppins: ["Poppins", "sans-serif"], 
         prata: ['Prata', 'serif'],
+        outfit: ['Outfit','serif'],
       },
     },
   },
