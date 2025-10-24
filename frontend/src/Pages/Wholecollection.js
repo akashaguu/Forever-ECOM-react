@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import line2 from '../images/Rectangle 3605.png'
 import dressimg1 from '../images/Rectangle 3608.png'
 import dressimg2 from '../images/Rectangle 3609.png'
@@ -47,23 +47,35 @@ function Wholecollection() {
   const collection = [{
     colimg: dressimg1,
     coltext: "Round Neck Cotton Top",
-    colrate: "$149"
+    colrate: "$503",
+    category:"Men",
+    type:"Topwear"
+
   }, {
     colimg: dressimg2,
     coltext: "Round Neck Cotton Top",
-    colrate: "$149"
+    colrate: "$19",
+    category:"Women",
+    type:"Bottomwear"
   }, {
     colimg: dressimg3,
     coltext: "Round Neck Cotton T-shirt",
-    colrate: "$149"
+    colrate: "$404",
+     category:"Kids",
+    type:"Topwear"
+
   }, {
     colimg: dressimg4,
     coltext: "Round Neck Cotton T-shirt",
-    colrate: "$149"
+    colrate: "$200", 
+    category:"Men",
+    type:"Winterwear"
   }, {
     colimg: dressimg5,
     coltext: "Round Neck Cotton T-shirt",
-    colrate: "$149"
+    colrate: "$450",
+    category:"Men",
+    type:"Topwear"
   }, {
     colimg: dressimg6,
     coltext: "Round Neck Cotton T-shirt",
@@ -206,6 +218,42 @@ function Wholecollection() {
     colrate: "$149"
   }
   ]
+  const [selectedCategories,setSelectedCategories]=useState([]);
+  const [selectedType,setSelectedType]=useState([]);
+  const [sortOrder,setSortOrder]=useState("")
+
+  const handleCategoryChange=(e)=>{
+    const  value=e.target.value;
+    setSelectedCategories((prev)=> prev.includes(value)?prev.filter((c)=>c!==value):[...prev,value]);
+  };
+  const handleTypeChange=(e)=>{
+    const value=e.target.value;
+    setSelectedType((prev)=>prev.includes(value)?prev.filter((c)=>c!==value):[...prev,value]);
+  };
+
+  const handleSortChange=(e)=>{
+    setSortOrder(e.target.value);
+  };
+
+  const filteredCollection=collection.filter((item)=>{
+    const categoryMatch=selectedCategories.length===0||selectedCategories.includes(item.category);
+    const typeMatch=selectedType.length===0||selectedType.includes(item.type);
+    return categoryMatch&&typeMatch ;
+  })
+
+  const finalCollection=[...filteredCollection]
+  if(sortOrder==="low"){
+    finalCollection.sort((a,b)=>
+    parseFloat(a.colrate.replace("$",""))-parseFloat(b.colrate.replace("$",""))
+    );
+  }
+  else if(sortOrder==="high"){
+    finalCollection.sort((a,b)=>
+    parseFloat(b.colrate.replace("$",""))-parseFloat(a.colrate.replace("$",""))
+    );
+  }
+
+
   return (
     <div className=''>
       <div className='flex  border-gray-800 border-t w-[1150px] ml-14 mt-10 '>
@@ -216,9 +264,10 @@ function Wholecollection() {
         </div>
         <div className='flex gap-16 ml-[280px] border mt-[100px] border-black w-[200px] h-10 '>
           {/* <label className='mt-2 ml-3'>Sortby:</label> */}
-          <select className='font-lg text-normal text-end' >
+          <select className='font-lg text-normal text-end' onChange={handleSortChange} value={sortOrder}>
+            <option value="">Sortby:</option>
             <option value="low">Sortby:Price: Low To High</option>
-            <option value="high">High</option>
+            <option value="high">Sortby:Price: High To Low</option>
           </select>
           {/* <div className='flex ml-4 mt-2'>
                     <h2 className='text-gray-600 font-normal'>Sort by:</h2>
@@ -233,9 +282,24 @@ function Wholecollection() {
           <div className='ml-[100px] border-2 w-[200px] h-[140px]'>
             <div><h2 className='font-lg text-normal mb-3 ml-3 text-normal font-normal'>CATEGORIES</h2></div>
             <div className='flex flex-col items-right justify-center gap-3 ml-3'>
-              <div className='text-sm'><input type='checkbox' className='mr-2 ' /> Men</div>
+            {
+              ["Men","Women","Kids"].map((i)=>(
+                <label key={i} className="text-sm">
+                  <input
+                    type="checkbox"
+                    value={i}
+                    onChange={handleCategoryChange}
+                    checked={selectedCategories.includes(i)}
+                    className="mr-2"
+                  />
+                  {i}
+                </label>
+              ))
+            }
+
+              {/* <div className='text-sm'><input type='checkbox' className='mr-2 ' /> Men</div>
               <div className='text-sm'><input type='checkbox' className='mr-2 ' />   Women</div>
-              <div className='text-sm'><input type='checkbox' className='mr-2 ' />   Kids</div>
+              <div className='text-sm'><input type='checkbox' className='mr-2 ' />   Kids</div> */}
             </div>
 
           </div>
@@ -243,9 +307,25 @@ function Wholecollection() {
           <div className='ml-[100px] mt-5 border-2 w-[200px] h-[140px]'>
             <div><h2 className='font-lg text-normal mb-3 ml-3 text-normal font-normal'>TYPE</h2></div>
             <div className='flex flex-col items-right justify-center gap-3 ml-3'>
-              <div className='text-sm'><input type='checkbox' className='mr-2 ' /> Topwear</div>
+
+                
+                  {["Topwear","Bottomwear","Winterwear"].map((t)=>(
+      <label key={t} className="text-sm">
+        <input
+          type="checkbox"
+          value={t}
+          onChange={handleTypeChange}
+          checked={selectedType.includes(t)}
+          className="mr-2"
+        />
+        {t}
+      </label>
+    ))}
+                
+
+              {/* <div className='text-sm'><input type='checkbox' className='mr-2 ' /> Topwear</div>
               <div className='text-sm'><input type='checkbox' className='mr-2 ' />   Bottomwear</div>
-              <div className='text-sm'><input type='checkbox' className='mr-2 ' />   Winterwear</div>
+              <div className='text-sm'><input type='checkbox' className='mr-2 ' />   Winterwear</div> */}
             </div>
 
           </div>
@@ -254,7 +334,7 @@ function Wholecollection() {
         <div className='grid grid-cols-4 ml-[50px] mt-4 gap-[20px]'>
 
           {
-            collection.map((i) => (
+            finalCollection.map((i) => (
               <div>
                 <div className=''><img src={i.colimg} alt='collection' /></div>
                 <div>

@@ -1,10 +1,12 @@
 import React from 'react'
+import { useState,useEffect } from 'react'
+
 import navimage from '../../images/Ellipse 658.png'
 import searchimg from '../../images/search icon.png'
 import profileimg from '../../images/profile-icon.png'
 import bagimage from '../../images/Vector.png'
-import { NavLink } from 'react-router-dom'
-import Login from '../../Pages/Login'
+import { NavLink,useNavigate } from 'react-router-dom'
+
 
 function Header() {
   const homelink=[{
@@ -21,6 +23,23 @@ function Header() {
     name:"CONTACT",
     value:'/contact'
   }]
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // ✅ Check token on mount
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token); // true if token exists
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userid');
+    setIsLoggedIn(false);
+    navigate('/login'); // redirect to login page
+  };
+
+
   return (
     
     <div className='flex'>
@@ -39,10 +58,38 @@ function Header() {
         <div>ABOUT</div>
         <div>CONTACT</div> */}
       </div>
-      <div className='flex ml-[250px] gap-10 mt-8'>
+      <a href='http://localhost:3001'>
+      <button className='className="mt-8 mb-1 ml-20 text-sm font-medium border border-gray-400 rounded-lg hover:bg-black hover:text-white transition">'>Admin</button>
+
+      </a>
+      <div className='flex ml-28 gap-10 mt-8'>
         
         <div><img src={searchimg} alt='sreachimg'></img></div>
-        <NavLink to={'/login'}><img src={profileimg} alt='profileimg' ></img></NavLink>
+        {isLoggedIn ? (
+  <div className='relative group'>
+    <img src={profileimg} alt='profileimg' className='cursor-pointer' />
+    {/* Dropdown on hover */}
+    <div className='absolute right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden group-hover:block'>
+      <button
+        className='block w-full text-left px-4 py-2 hover:bg-gray-100'
+        onClick={() => navigate('/orders')}
+      >
+        Orders
+      </button>
+      <button
+        className='block w-full text-left px-4 py-2 hover:bg-gray-100'
+        onClick={handleLogout}
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+) : (
+  <NavLink to={'/signup'}>
+    <img src={profileimg} alt='profileimg' />
+  </NavLink>
+)}
+
         <NavLink to={'/cart'}><img src={bagimage} alt='bagimg' ></img></NavLink>
       </div>
    </div>
