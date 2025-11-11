@@ -24,13 +24,23 @@ function Header() {
     value:'/contact'
   }]
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
-  // ✅ Check token on mount
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token); // true if token exists
-  }, []);
+useEffect(() => {
+  const checkLoginStatus = () => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  };
+
+  // Run once on mount
+  checkLoginStatus();
+
+  // Listen for storage changes (e.g. login/logout in another tab)
+  window.addEventListener("storage", checkLoginStatus);
+
+  // Clean up
+  return () => window.removeEventListener("storage", checkLoginStatus);
+}, []);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -65,19 +75,25 @@ function Header() {
       <div className='flex ml-28 gap-10 mt-8'>
         
         <div><img src={searchimg} alt='sreachimg'></img></div>
-        {isLoggedIn ? (
-  <div className='relative group'>
-    <img src={profileimg} alt='profileimg' className='cursor-pointer' />
-    {/* Dropdown on hover */}
-    <div className='absolute right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden group-hover:block'>
+       {isLoggedIn ? (
+  <div className="relative group">
+    {/* Profile Icon */}
+    <img
+      src={profileimg}
+      alt="profileimg"
+      className="cursor-pointer"
+    />
+
+    {/* Dropdown Menu */}
+    <div className="absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible invisible transition-opacity duration-200 z-50">
       <button
-        className='block w-full text-left px-4 py-2 hover:bg-gray-100'
-        onClick={() => navigate('/orders')}
+        className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+        onClick={() => navigate('/order')}
       >
         Orders
       </button>
       <button
-        className='block w-full text-left px-4 py-2 hover:bg-gray-100'
+        className="block w-full text-left px-4 py-2 hover:bg-gray-100"
         onClick={handleLogout}
       >
         Logout
@@ -85,8 +101,8 @@ function Header() {
     </div>
   </div>
 ) : (
-  <NavLink to={'/signup'}>
-    <img src={profileimg} alt='profileimg' />
+  <NavLink to="/signup">
+    <img src={profileimg} alt="profileimg" />
   </NavLink>
 )}
 

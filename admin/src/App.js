@@ -1,45 +1,44 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import AdminLogin from './component/AdminLogin';
-import Header from './component/Header';
-import Sidebar from './component/Sidebar';
-import Additems from './pages/Additems';
+import Home from './pages/Home';
+import AddItems from './pages/Additems';
+import List from './pages/List';
+import Orderss from './pages/Orderss'
+
+
+
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem('admintoken') || '');
+  // const [token]=useState(localStorage.getItem("adminToken")?localStorage.getItem("adminToken"):"");
 
+  // useEffect(()=>{
+  //   localStorage.setItem("adminToken",token);
+  // },[token]);
+  
   return (
-    <BrowserRouter>
-      <ToastContainer />
+    <div>
+    
+      <BrowserRouter>
 
-      {!token ? (
-        // Login page
-        <Routes>
-          <Route path="*" element={<AdminLogin setToken={setToken} />} />
-        </Routes>
-      ) : (
-        // Logged-in layout: Header top, Sidebar + content below
-        <div className="flex flex-col h-screen">
-          {/* Header at top */}
-          <Header />
+    
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path='/login' element={<AdminLogin/>}/>
+        <Route path='/home' element={<Home />}/>
+        <Route path='/addproduct' element={<AddItems/>}/>
+        <Route path='/listproduct' element={<List/>}/>
+        <Route path='/listorder' element={<Orderss/>}/>
 
-          {/* Below header: sidebar + main content */}
-          <div className="flex flex-1 overflow-hidden">
-            <Sidebar className="w-64" />
-            <div className="flex-1 p-6 bg-gray-50 overflow-auto">
-              <Routes>
-                {/* Default blank page */}
-                <Route path="/" element={<div></div>} />
-                {/* Additems page */}
-                <Route path="/additems" element={<Additems />} />
-              </Routes>
-            </div>
-          </div>
-        </div>
-      )}
-    </BrowserRouter>
+      </Routes>
+      
+      
+
+      </BrowserRouter>
+    </div>
+
+
   );
 }
 

@@ -1,61 +1,64 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import line2 from '../../images/Rectangle 3605.png'
-import dressimg1 from '../../images/Rectangle 3608.png'
-import dressimg2 from '../../images/Rectangle 3609.png'
-import dressimg3 from '../../images/Rectangle 3619.png'
-import dressimg4 from '../../images/Rectangle 3611.png'
-import dressimg5 from '../../images/Rectangle 3635.png'
-import dressimg6 from '../../images/Rectangle 3613.png'
-import dressimg7 from '../../images/Rectangle 3615.png'
-import dressimg8 from '../../images/Rectangle 3634.png'
-import dressimg9 from '../../images/Rectangle 3616.png'
-import dressimg10 from '../../images/Rectangle 3617.png'
+import { useContext } from 'react'
+import { ShopContext } from '../Context/ShopContext'
+// import dressimg1 from '../../images/Rectangle 3608.png'
+// import dressimg2 from '../../images/Rectangle 3609.png'
+// import dressimg3 from '../../images/Rectangle 3619.png'
+// import dressimg4 from '../../images/Rectangle 3611.png'
+// import dressimg5 from '../../images/Rectangle 3635.png'
+// import dressimg6 from '../../images/Rectangle 3613.png'
+// import dressimg7 from '../../images/Rectangle 3615.png'
+// import dressimg8 from '../../images/Rectangle 3634.png'
+// import dressimg9 from '../../images/Rectangle 3616.png'
+// import dressimg10 from '../../images/Rectangle 3617.png'
 
 function Collections({title1,title2,limit,hideDescription}) {
-  const collection=[{
-    colimg:dressimg1,
-    coltext:"Round Neck Cotton Top",
-    colrate:"$149"
-  },{
-    colimg:dressimg2,
-    coltext:"Round Neck Cotton Top",
-    colrate:"$149"
-  },{
-    colimg:dressimg3,
-    coltext:"Round Neck Cotton T-shirt",
-    colrate:"$149"
-  },{
-    colimg:dressimg4,
-    coltext:"Round Neck Cotton T-shirt",
-    colrate:"$149"
-  },{
-    colimg:dressimg5,
-    coltext:"Round Neck Cotton T-shirt",
-    colrate:"$149"
-  },{
-    colimg:dressimg6,
-    coltext:"Round Neck Cotton T-shirt",
-    colrate:"$149"
-  },{
-    colimg:dressimg7,
-    coltext:"Round Neck Cotton T-shirt",
-    colrate:"$149"
-  },{
-    colimg:dressimg8,
-    coltext:"Round Neck Cotton T-shirt",
-    colrate:"$149"
-  },{
-    colimg:dressimg9,
-    coltext:"Round Neck Cotton T-shirt",
-    colrate:"$149"
-  },{
-    colimg:dressimg10,
-    coltext:"Round Neck Cotton T-shirt",
-    colrate:"$149"
-  }
-]
-const displaycollection=limit?collection.slice(0,limit):collection
+  const {products}=useContext(ShopContext);
+//   const collection=[{
+//     colimg:dressimg1,
+//     coltext:"Round Neck Cotton Top",
+//     colrate:"$149"
+//   },{
+//     colimg:dressimg2,
+//     coltext:"Round Neck Cotton Top",
+//     colrate:"$149"
+//   },{
+//     colimg:dressimg3,
+//     coltext:"Round Neck Cotton T-shirt",
+//     colrate:"$149"
+//   },{
+//     colimg:dressimg4,
+//     coltext:"Round Neck Cotton T-shirt",
+//     colrate:"$149"
+//   },{
+//     colimg:dressimg5,
+//     coltext:"Round Neck Cotton T-shirt",
+//     colrate:"$149"
+//   },{
+//     colimg:dressimg6,
+//     coltext:"Round Neck Cotton T-shirt",
+//     colrate:"$149"
+//   },{
+//     colimg:dressimg7,
+//     coltext:"Round Neck Cotton T-shirt",
+//     colrate:"$149"
+//   },{
+//     colimg:dressimg8,
+//     coltext:"Round Neck Cotton T-shirt",
+//     colrate:"$149"
+//   },{
+//     colimg:dressimg9,
+//     coltext:"Round Neck Cotton T-shirt",
+//     colrate:"$149"
+//   },{
+//     colimg:dressimg10,
+//     coltext:"Round Neck Cotton T-shirt",
+//     colrate:"$149"
+//   }
+// ]
+const displaycollection=limit? products.slice(0,limit):products
   return (
     
     <div>
@@ -75,10 +78,10 @@ const displaycollection=limit?collection.slice(0,limit):collection
         {
           displaycollection.map((i)=>(
             <div>
-            <Link to={'/products'} className=''><img src={i.colimg} alt='collect'/></Link>
+            <Link to={`/products/${i._id}`} className=''><img src={i.image} alt='h'/></Link>
             <div>
-              <h2 className='text-xs mt-3'>{i.coltext}</h2>
-              <h2>{i.colrate}</h2>
+              <h2 className='text-xs mt-3'>{i.name}</h2>
+              <h2>{i.price}</h2>
             </div>
             </div>
           ))

@@ -1,20 +1,26 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Additems from './Additems'
 import Header from '../component/Header'
 import Sidebar from '../component/Sidebar'
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+  
 
 function Home() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("admintoken")) {
+      navigate("/login");
+    }
+  }, [navigate]);
+
   return (
-    <div>
-    <Header />
-    <div className='flex'>
-      <Sidebar/>
-      <Routes>
-        <Route path='/additems' element={<Additems/>}></Route>
-      </Routes>
-      </div>
-    </div>
+    <>
+    <Header/>
+    <Sidebar/>
+    
+    
+    </>
   )
 }
 

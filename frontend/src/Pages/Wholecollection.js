@@ -1,225 +1,230 @@
 import React, { useState } from 'react'
 import line2 from '../images/Rectangle 3605.png'
-import dressimg1 from '../images/Rectangle 3608.png'
-import dressimg2 from '../images/Rectangle 3609.png'
-import dressimg3 from '../images/Rectangle 3619.png'
-import dressimg4 from '../images/Rectangle 3611.png'
-import dressimg5 from '../images/Rectangle 3635.png'
-import dressimg6 from '../images/Rectangle 3613.png'
-import dressimg7 from '../images/Rectangle 3615.png'
-import dressimg8 from '../images/Rectangle 3634.png'
-import dressimg9 from '../images/Rectangle 3616.png'
-import dressimg10 from '../images/Rectangle 3617.png'
-import dressimg11 from '../images/p_img3.png'
-import dressimg12 from '../images/p_img6.png'
-import dressimg13 from '../images/p_img7.png'
-import dressimg14 from '../images/p_img9.png'
-import dressimg15 from '../images/p_img10.png'
-import dressimg16 from '../images/p_img14.png'
-import dressimg17 from '../images/p_img15.png'
-import dressimg18 from '../images/p_img16.png'
-import dressimg19 from '../images/p_img17.png'
-import dressimg20 from '../images/p_img18.png'
-import dressimg21 from '../images/p_img19.png'
-import dressimg22 from '../images/p_img20.png'
-import dressimg23 from '../images/p_img21.png'
-import dressimg24 from '../images/p_img22.png'
-import dressimg25 from '../images/p_img23.png'
-import dressimg26 from '../images/p_img24.png'
-import dressimg27 from '../images/p_img25.png'
-import dressimg28 from '../images/p_img26.png'
-import dressimg29 from '../images/p_img28.png'
-import dressimg30 from '../images/p_img35.png'
-import dressimg31 from '../images/p_img36.png'
-import dressimg32 from '../images/p_img39.png'
-import dressimg33 from '../images/p_img40.png'
-import dressimg34 from '../images/p_img43.png'
-import dressimg35 from '../images/p_img44.png'
-import dressimg36 from '../images/p_img45.png'
-import dressimg37 from '../images/p_img46.png'
-import dressimg38 from '../images/p_img47.png'
-import dressimg39 from '../images/p_img48.png'
-import dressimg40 from '../images/p_img49.png'
+import { Link } from 'react-router-dom';
+// import dressimg1 from '../images/Rectangle 3608.png'
+// import dressimg2 from '../images/Rectangle 3609.png'
+// import dressimg3 from '../images/Rectangle 3619.png'
+// import dressimg4 from '../images/Rectangle 3611.png'
+// import dressimg5 from '../images/Rectangle 3635.png'
+// import dressimg6 from '../images/Rectangle 3613.png'
+// import dressimg7 from '../images/Rectangle 3615.png'
+// import dressimg8 from '../images/Rectangle 3634.png'
+// import dressimg9 from '../images/Rectangle 3616.png'
+// import dressimg10 from '../images/Rectangle 3617.png'
+// import dressimg11 from '../images/p_img3.png'
+// import dressimg12 from '../images/p_img6.png'
+// import dressimg13 from '../images/p_img7.png'
+// import dressimg14 from '../images/p_img9.png'
+// import dressimg15 from '../images/p_img10.png'
+// import dressimg16 from '../images/p_img14.png'
+// import dressimg17 from '../images/p_img15.png'
+// import dressimg18 from '../images/p_img16.png'
+// import dressimg19 from '../images/p_img17.png'
+// import dressimg20 from '../images/p_img18.png'
+// import dressimg21 from '../images/p_img19.png'
+// import dressimg22 from '../images/p_img20.png'
+// import dressimg23 from '../images/p_img21.png'
+// import dressimg24 from '../images/p_img22.png'
+// import dressimg25 from '../images/p_img23.png'
+// import dressimg26 from '../images/p_img24.png'
+// import dressimg27 from '../images/p_img25.png'
+// import dressimg28 from '../images/p_img26.png'
+// import dressimg29 from '../images/p_img28.png'
+// import dressimg30 from '../images/p_img35.png'
+// import dressimg31 from '../images/p_img36.png'
+// import dressimg32 from '../images/p_img39.png'
+// import dressimg33 from '../images/p_img40.png'
+// import dressimg34 from '../images/p_img43.png'
+// import dressimg35 from '../images/p_img44.png'
+// import dressimg36 from '../images/p_img45.png'
+// import dressimg37 from '../images/p_img46.png'
+// import dressimg38 from '../images/p_img47.png'
+// import dressimg39 from '../images/p_img48.png'
+// import dressimg40 from '../images/p_img49.png'
+import { useContext } from 'react'; 
+import { ShopContext } from '../component/Context/ShopContext';
+
 
 
 
 function Wholecollection() {
-  const collection = [{
-    colimg: dressimg1,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$503",
-    category:"Men",
-    type:"Topwear"
+  const {products}=useContext(ShopContext);
+  // const collection = [{
+  //   colimg: dressimg1,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$503",
+  //   category:"Men",
+  //   type:"Topwear"
 
-  }, {
-    colimg: dressimg2,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$19",
-    category:"Women",
-    type:"Bottomwear"
-  }, {
-    colimg: dressimg3,
-    coltext: "Round Neck Cotton T-shirt",
-    colrate: "$404",
-     category:"Kids",
-    type:"Topwear"
+  // }, {
+  //   colimg: dressimg2,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$19",
+  //   category:"Women",
+  //   type:"Bottomwear"
+  // }, {
+  //   colimg: dressimg3,
+  //   coltext: "Round Neck Cotton T-shirt",
+  //   colrate: "$404",
+  //    category:"Kids",
+  //   type:"Topwear"
 
-  }, {
-    colimg: dressimg4,
-    coltext: "Round Neck Cotton T-shirt",
-    colrate: "$200", 
-    category:"Men",
-    type:"Winterwear"
-  }, {
-    colimg: dressimg5,
-    coltext: "Round Neck Cotton T-shirt",
-    colrate: "$450",
-    category:"Men",
-    type:"Topwear"
-  }, {
-    colimg: dressimg6,
-    coltext: "Round Neck Cotton T-shirt",
-    colrate: "$149"
-  }, {
-    colimg: dressimg7,
-    coltext: "Round Neck Cotton T-shirt",
-    colrate: "$149"
-  }, {
-    colimg: dressimg8,
-    coltext: "Round Neck Cotton T-shirt",
-    colrate: "$149"
-  }, {
-    colimg: dressimg9,
-    coltext: "Round Neck Cotton T-shirt",
-    colrate: "$149"
-  }, {
-    colimg: dressimg10,
-    coltext: "Round Neck Cotton T-shirt",
-    colrate: "$149"
-  }, {
-    colimg: dressimg11,
-    coltext: "Girls Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg12,
-    coltext: "Girls Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg13,
-    coltext: "Men Tapered Fit Flat-Front Trousers",
-    colrate: "$149"
-  }, {
-    colimg: dressimg14,
-    coltext: "Girls Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg15,
-    coltext: "Men Tapered Fit Flat-Front Trousers",
-    colrate: "$149"
-  }, {
-    colimg: dressimg16,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg17,
-    coltext: "Men Tapered Fit Flat-Front Trousers",
-    colrate: "$149"
-  }, {
-    colimg: dressimg18,
-    coltext: "Girls Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg19,
-    coltext: "Men Tapered Fit Flat-Front Trousers",
-    colrate: "$149"
-  }, {
-    colimg: dressimg20,
-    coltext: "Round Neck Cotton T-shirt",
-    colrate: "$149"
-  }, {
-    colimg: dressimg21,
-    coltext: "Round Neck Cotton T-shirt",
-    colrate: "$149"
-  }, {
-    colimg: dressimg22,
-    coltext: "Women Palazzo Pants with Waist Belt",
-    colrate: "$149"
-  }, {
-    colimg: dressimg23,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg24,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg25,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg26,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg27,
-    coltext: "Girls Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg28,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg29,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg30,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg31,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg32,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg33,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg34,
-    coltext: "Men Tapered Fit Flat-Front Trousers",
-    colrate: "$149"
-  }, {
-    colimg: dressimg35,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg36,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg37,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg38,
-    coltext: "Men Tapered Fit Flat-Front Trousers",
-    colrate: "$149"
-  }, {
-    colimg: dressimg39,
-    coltext: "Round Neck Cotton Top",
-    colrate: "$149"
-  }, {
-    colimg: dressimg40,
-    coltext: "Men Tapered Fit Flat-Front Trousers",
-    colrate: "$149"
-  }
-  ]
+  // }, {
+  //   colimg: dressimg4,
+  //   coltext: "Round Neck Cotton T-shirt",
+  //   colrate: "$200", 
+  //   category:"Men",
+  //   type:"Winterwear"
+  // }, {
+  //   colimg: dressimg5,
+  //   coltext: "Round Neck Cotton T-shirt",
+  //   colrate: "$450",
+  //   category:"Men",
+  //   type:"Topwear"
+  // }, {
+  //   colimg: dressimg6,
+  //   coltext: "Round Neck Cotton T-shirt",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg7,
+  //   coltext: "Round Neck Cotton T-shirt",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg8,
+  //   coltext: "Round Neck Cotton T-shirt",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg9,
+  //   coltext: "Round Neck Cotton T-shirt",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg10,
+  //   coltext: "Round Neck Cotton T-shirt",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg11,
+  //   coltext: "Girls Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg12,
+  //   coltext: "Girls Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg13,
+  //   coltext: "Men Tapered Fit Flat-Front Trousers",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg14,
+  //   coltext: "Girls Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg15,
+  //   coltext: "Men Tapered Fit Flat-Front Trousers",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg16,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg17,
+  //   coltext: "Men Tapered Fit Flat-Front Trousers",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg18,
+  //   coltext: "Girls Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg19,
+  //   coltext: "Men Tapered Fit Flat-Front Trousers",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg20,
+  //   coltext: "Round Neck Cotton T-shirt",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg21,
+  //   coltext: "Round Neck Cotton T-shirt",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg22,
+  //   coltext: "Women Palazzo Pants with Waist Belt",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg23,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg24,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg25,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg26,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg27,
+  //   coltext: "Girls Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg28,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg29,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg30,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg31,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg32,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg33,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg34,
+  //   coltext: "Men Tapered Fit Flat-Front Trousers",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg35,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg36,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg37,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg38,
+  //   coltext: "Men Tapered Fit Flat-Front Trousers",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg39,
+  //   coltext: "Round Neck Cotton Top",
+  //   colrate: "$149"
+  // }, {
+  //   colimg: dressimg40,
+  //   coltext: "Men Tapered Fit Flat-Front Trousers",
+  //   colrate: "$149"
+  // }
+  // ]
   const [selectedCategories,setSelectedCategories]=useState([]);
-  const [selectedType,setSelectedType]=useState([]);
+  const [selectedSubCategories, setSelectedSubCategories] = useState([]);
   const [sortOrder,setSortOrder]=useState("")
 
   const handleCategoryChange=(e)=>{
@@ -228,30 +233,30 @@ function Wholecollection() {
   };
   const handleTypeChange=(e)=>{
     const value=e.target.value;
-    setSelectedType((prev)=>prev.includes(value)?prev.filter((c)=>c!==value):[...prev,value]);
+    setSelectedSubCategories((prev)=>prev.includes(value)?prev.filter((c)=>c!==value):[...prev,value]);
   };
 
   const handleSortChange=(e)=>{
     setSortOrder(e.target.value);
   };
 
-  const filteredCollection=collection.filter((item)=>{
+  const filteredCollection=products.filter((item)=>{
     const categoryMatch=selectedCategories.length===0||selectedCategories.includes(item.category);
-    const typeMatch=selectedType.length===0||selectedType.includes(item.type);
-    return categoryMatch&&typeMatch ;
+    const subcategoryMatch=selectedSubCategories.length===0||selectedSubCategories.includes(item.subcategory);
+    return categoryMatch&&subcategoryMatch;
   })
 
   const finalCollection=[...filteredCollection]
-  if(sortOrder==="low"){
-    finalCollection.sort((a,b)=>
-    parseFloat(a.colrate.replace("$",""))-parseFloat(b.colrate.replace("$",""))
-    );
-  }
-  else if(sortOrder==="high"){
-    finalCollection.sort((a,b)=>
-    parseFloat(b.colrate.replace("$",""))-parseFloat(a.colrate.replace("$",""))
-    );
-  }
+ const toNum = (price) =>
+  Number(price.toString().replace(/[^0-9.-]+/g, ""));
+
+if (sortOrder === "low") {
+  finalCollection.sort((a, b) => toNum(a.price) - toNum(b.price));
+} 
+else if (sortOrder === "high") {
+  finalCollection.sort((a, b) => toNum(b.price) - toNum(a.price));
+}
+
 
 
   return (
@@ -283,7 +288,7 @@ function Wholecollection() {
             <div><h2 className='font-lg text-normal mb-3 ml-3 text-normal font-normal'>CATEGORIES</h2></div>
             <div className='flex flex-col items-right justify-center gap-3 ml-3'>
             {
-              ["Men","Women","Kids"].map((i)=>(
+              ["men","women","kids"].map((i)=>(
                 <label key={i} className="text-sm">
                   <input
                     type="checkbox"
@@ -309,13 +314,13 @@ function Wholecollection() {
             <div className='flex flex-col items-right justify-center gap-3 ml-3'>
 
                 
-                  {["Topwear","Bottomwear","Winterwear"].map((t)=>(
+                  {["topwear","bottomwear","winterwear"].map((t)=>(
       <label key={t} className="text-sm">
         <input
           type="checkbox"
           value={t}
           onChange={handleTypeChange}
-          checked={selectedType.includes(t)}
+          checked={selectedSubCategories.includes(t)}
           className="mr-2"
         />
         {t}
@@ -336,10 +341,10 @@ function Wholecollection() {
           {
             finalCollection.map((i) => (
               <div>
-                <div className=''><img src={i.colimg} alt='collection' /></div>
+                <Link to={`/products/${i._id}`} className=''><img src={i.image} alt='collection'/></Link>
                 <div>
-                  <h2 className='text-xs mt-3'>{i.coltext}</h2>
-                  <h2>{i.colrate}</h2>
+                  <h2 className='text-xs mt-3'>{i.name}</h2>
+                  <h2>{i.price}</h2>
                 </div>
               </div>
             ))

@@ -69,9 +69,13 @@
     exports.adminLogin= async(req,res)=>{
         try{
             const {email,password}=req.body
+            console.log("ADMIN_EMAIL:", process.env.ADMIN_EMAIL);
+            console.log("ADMIN_PASS:", process.env.ADMIN_PASS);
+            console.log("User Input:", email, password);
+
             if (email===process.env.ADMIN_EMAIL &&
                 password===process.env.ADMIN_PASS){
-                    const token=createToken("admin","admin")
+                    const token=createToken("admin")
                     return res.status(200).json({
                         success:true,
                         message:"Admin successful",token,

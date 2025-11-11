@@ -68,7 +68,10 @@ function SignUp() {
 
 
       toast.success("Registered successfully!");
+      
+      window.location.reload(); 
 
+      
       // Wait a tiny moment before navigation to ensure localStorage updates
       setTimeout(() => navigate("/"), 100);
     } else {
